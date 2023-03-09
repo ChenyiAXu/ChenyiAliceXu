@@ -1,0 +1,63 @@
+
+<?import javafx.scene.layout.GridPane?>
+
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.CheckMenuItem?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.canvas.Canvas?>
+<VBox fx:id="root" fx:controller="finalproject.system.Controller" xmlns:fx="http://javafx.com/fxml" stylesheets="@../style.css">
+    <MenuBar id="menubar">
+        <Menu text="Control">
+            <MenuItem text="Start Simulation" onAction="#startSimulation"></MenuItem>
+            <MenuItem text="Reset" onAction="#reset"></MenuItem>
+            <MenuItem text="Reset Waypoints" onAction="#resetWaypoints"></MenuItem>
+            <MenuItem text="Reset Path" onAction="#resetPath"></MenuItem>
+            <SeparatorMenuItem></SeparatorMenuItem>
+            <MenuItem text="Exit" onAction="#exit"></MenuItem>
+        </Menu>
+        <Menu text="Maps">
+            <MenuItem text="Map 1" onAction="#drawMap1"></MenuItem>
+            <MenuItem text="Map 2" onAction="#drawMap2"></MenuItem>
+            <MenuItem text="Map 3" onAction="#drawMap3"></MenuItem>
+        </Menu>
+        <Menu text="View">
+            <CheckMenuItem fx:id="systemLogToggle" selected="true" text="Display system log"/>
+            <CheckMenuItem fx:id="tileTextToggle" selected="false" text="Display tile text"/>
+            <CheckMenuItem fx:id="gridDisplayToggle" selected="false" text="Display grid"/>
+            <CheckMenuItem fx:id="dangerFactorToggle" selected="false" text="Enable danger factor"/>
+        </Menu>
+    </MenuBar>
+    <BorderPane>
+        <center>
+            <Pane fx:id="mapPanel" id="map">
+            </Pane>
+        </center>
+        <bottom>
+            <HBox fx:id="interfacePanel" id="interfacePanel">
+                <HBox fx:id="commandPanel" id="commandPanel">
+                    <Button styleClass="commandButton" wrapText="true" text="Add waypoint" onAction="#onAddWaypointButtonClick"></Button>
+                    <Button styleClass="commandButton" wrapText="true" text="BFS path" onAction="#onBFSButtonClick">BFS path</Button>
+                    <Button styleClass="commandButton" wrapText="true" text="DFS path" onAction="#onDFSButtonClick">DFS path</Button>
+                    <Button styleClass="commandButton" wrapText="true" text="Shortest path" onAction="#onShortestPathButtonClick">Shortest path</Button>
+                    <Button styleClass="commandButton" wrapText="true" text="Fastest path" onAction="#onFastestPathButtonClick">Fastest path</Button>
+                    <Button styleClass="commandButton" wrapText="true" text="Safest path" onAction="#onSafestPathButtonClick"></Button>
+                </HBox>
+                <ScrollPane fx:id="messagePanel" id="messagePanel">
+                    <VBox fx:id="textPanel" id="textPanel"></VBox>
+                </ScrollPane>
+            </HBox>
+        </bottom>
+    </BorderPane>
+</VBox>
